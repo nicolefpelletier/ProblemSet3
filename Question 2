@@ -1,0 +1,10 @@
+#Import pandas dataframe
+import pandas as pd
+
+#Read data file into a dataframe
+dataframe = pd.read_csv("data.csv")
+#Get the highest water level
+topWaterLevel = dataframe[" Water Level"].idxmax()
+
+#Print the highest water level and date
+print(dataframe.loc[topWaterLevel, "Date Time" : " Water Level"])
