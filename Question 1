@@ -1,0 +1,27 @@
+file = open("data.csv")
+waterLevel=0
+waterLevelList=[]
+dateTime=0
+dateTimeList =[]
+topWaterLevell=0
+
+for line in file:
+    delimiter = ","
+    lines = (line.strip().split(delimiter))
+    #Try to float the string, if can't skip it and append all others into the list to calculate max.
+    try:
+        waterLevel = float(lines[1])
+        waterLevelList.append(waterLevel)
+    except:
+        pass
+    dateTime = lines[0]
+    dateTimeList.append(dateTime)
+
+#Get the max water level from the list
+topWaterLevel = max(waterLevelList)
+
+#Match the date and time to the water level in the list
+topWaterLevelIndex = waterLevelList.index(topWaterLevel)+1
+topDate = dateTimeList[topWaterLevelIndex]
+
+print("Highest water level: ", topWaterLevel, "  Date: ", topDate)
