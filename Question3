@@ -1,0 +1,16 @@
+#Import pandas dataframe
+import pandas as pd
+
+#Read data file into a dataframe
+dataframe = pd.read_csv("data.csv")
+
+#Find the water level difference
+dataframe['Water level difference'] = dataframe[" Water Level"].diff()
+
+#Find the max water level difference
+topWaterLevelDiff = dataframe['Water level difference'].idxmax()
+
+#Parameters associated with the water level difference 
+#0 = Date Time, 1 = Water Level, 8 = Water Level Difference
+#Print the water level difference
+print(dataframe.iloc[topWaterLevelDiff,[0, 1, 8]])
